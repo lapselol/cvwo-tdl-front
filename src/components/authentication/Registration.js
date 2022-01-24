@@ -48,7 +48,7 @@ export default function Registration(props) {
   const handleSubmit = (event) => {
     axios
       .post(
-        "API_ENDPOINT/registrations",
+        `${API_ENDPOINT}/registrations`,
         {
           user: {
             email: values.email,

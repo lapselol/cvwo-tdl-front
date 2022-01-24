@@ -39,7 +39,7 @@ export default function Appbar(props) {
   const handleLogoutClick = () => {
     console.log("Clicked Logout");
     axios
-      .delete("API_ENDPOINT/logout", { withCredentials: true })
+      .delete(`${API_ENDPOINT}/logout`, { withCredentials: true })
       .then((response) => {
         handleLogout();
       })
