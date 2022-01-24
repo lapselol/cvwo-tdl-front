@@ -1,52 +1,54 @@
-import React, { useState } from 'react'
-import { makeStyles } from '@mui/styles';
+import React, { useState } from "react";
+import { makeStyles, StylesProvider } from "@mui/styles";
 
 export function useForm(initialFValues, validateOnChange = false, validate) {
+  const [values, setValues] = useState(initialFValues);
+  const [errors, setErrors] = useState({});
 
-    const [values, setValues] = useState(initialFValues);
-    const [errors, setErrors] = useState({});
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setValues({
+      ...values,
+      [name]: value,
+    });
+    if (validateOnChange) validate({ [name]: value });
+  };
 
-    const handleInputChange = e => {
-        const { name, value } = e.target
-        setValues({
-            ...values,
-            [name]: value
-        })
-        if (validateOnChange)
-            validate({ [name]: value })
-    }
+  const resetForm = () => {
+    setValues(initialFValues);
+    setErrors({});
+  };
 
-    const resetForm = () => {
-        setValues(initialFValues);
-        setErrors({})
-    }
-
-    return {
-        values,
-        setValues,
-        errors,
-        setErrors,
-        handleInputChange,
-        resetForm
-    }
+  return {
+    values,
+    setValues,
+    errors,
+    setErrors,
+    handleInputChange,
+    resetForm,
+  };
 }
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(
+  (theme) => ({
     root: {
-        '& .MuiFormControl-root': {
-            width: '80%',
-            margin: theme.spacing(1)
-        }
-    }
-}), {index: 1})
+      "& .MuiFormControl-root": {
+        width: "80%",
+        margin: theme.spacing(1),
+      },
+    },
+  }),
+  { index: 1 }
+);
 
 export function Form(props) {
-
-    const classes = useStyles();
-    const { children, ...other } = props;
-    return (
-        <form className={classes.root} autoComplete="off" {...other}>
-            {props.children}
-        </form>
-    )
+  const classes = useStyles();
+  const { children, ...other } = props;
+  return (
+    <StylesProvider injectFirst>
+      <form className={classes.root} autoComplete="off" {...other}>
+        {props.children}
+      </form>
+    </StylesProvider>
+  );
 }
