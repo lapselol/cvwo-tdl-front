@@ -24,14 +24,15 @@ const theme = createTheme({
       default: "#f4f5fd",
     },
   },
-});
+}, {index: 1});
 
 const useStyles = makeStyles({
   appMain: {
     paddingLeft: "320px",
     width: "100%",
   },
-});
+  index: 1,
+} );
 
 export default function Dashboard(props) {
   const { loginStatus, handleLogout } = props;

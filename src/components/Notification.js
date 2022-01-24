@@ -6,7 +6,7 @@ const useStyles = makeStyles(theme => ({
     root: {
         top: theme.spacing(9)
     }
-}))
+}), {index: 1})
 
 export default function Notification(props) {
 

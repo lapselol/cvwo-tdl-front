@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
             opacity:'0.6'
         }
     }
-}))
+}), {index: 1})
 
 export default function PageHeader(props) {
 

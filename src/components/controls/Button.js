@@ -7,7 +7,7 @@ const useStyles = makeStyles(theme => ({
     root: {
         margin: theme.spacing(5)
     }
-}))
+}), {index: 1})
 
 export default function Button(props) {
 

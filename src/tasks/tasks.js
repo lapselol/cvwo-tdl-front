@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
     position: "flex",
     left:"180px",
   }
-}));
+}), {index: 1});
 
 const headCells = [
   { id: "checkbox", label: "", disableSorting: true },

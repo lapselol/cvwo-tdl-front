@@ -25,7 +25,7 @@ const useStyles = makeStyles(theme => ({
             cursor: 'pointer',
         },
     },
-}))
+}), {index: 1})
 
 export default function useTable(records, headCells, filterFn) {
     console.log(records, "hello")
