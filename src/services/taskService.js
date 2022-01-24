@@ -1,6 +1,5 @@
 const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT
 const apiURL = `${API_ENDPOINT}/api/v1/todos`
-console.log(apiURL,"hello")
 
 export function getAllTasks(){
     return fetch(apiURL)

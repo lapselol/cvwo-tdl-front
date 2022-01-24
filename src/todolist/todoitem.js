@@ -32,7 +32,7 @@ const useStyles = makeStyles({
     todo_body: {
         padding: "1em"
     }
-}, {index: 1})
+})
 
 export default function TodoItem(props){
     const classes = useStyles();

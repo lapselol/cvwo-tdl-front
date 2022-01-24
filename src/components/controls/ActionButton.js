@@ -9,7 +9,7 @@ const useStyles = makeStyles(theme => ({
         margin: theme.spacing(0.5)
     },
 
-}), {index: 1})
+}))
 
 export default function ActionButton(props) {
 

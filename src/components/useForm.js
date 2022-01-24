@@ -29,26 +29,21 @@ export function useForm(initialFValues, validateOnChange = false, validate) {
   };
 }
 
-const useStyles = makeStyles(
-  (theme) => ({
-    root: {
-      "& .MuiFormControl-root": {
-        width: "80%",
-        margin: theme.spacing(1),
-      },
+const useStyles = makeStyles((theme) => ({
+  root: {
+    "& .MuiFormControl-root": {
+      width: "80%",
+      margin: theme.spacing(1),
     },
-  }),
-  { index: 1 }
-);
+  },
+}));
 
 export function Form(props) {
   const classes = useStyles();
   const { children, ...other } = props;
   return (
-    <StylesProvider injectFirst>
-      <form className={classes.root} autoComplete="off" {...other}>
-        {props.children}
-      </form>
-    </StylesProvider>
+    <form className={classes.root} autoComplete="off" {...other}>
+      {props.children}
+    </form>
   );
 }

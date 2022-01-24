@@ -36,7 +36,7 @@ const useStyles = makeStyles(theme => ({
             fontSize: '8rem',
         }
     },
-}), {index: 1})
+}))
 
 export default function ConfirmDialog(props) {
 

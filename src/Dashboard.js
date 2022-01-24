@@ -24,7 +24,7 @@ const theme = createTheme({
       default: "#f4f5fd",
     },
   },
-}, {index: 1});
+});
 
 const useStyles = makeStyles({
   appMain: {
@@ -38,7 +38,7 @@ export default function Dashboard(props) {
   const { loginStatus, handleLogout } = props;
 
   const classes = useStyles();
-
+  console.log(loginStatus, "loginStatus")
   if (loginStatus === "NOT_LOGGED_IN") {
     return <Navigate to="/" />;
   }
