@@ -8,12 +8,13 @@ import Dashboard from "./Dashboard";
 import Registration from "./components/authentication/Registration";
 
 export default function App() {
+  const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT
   const [loginStatus, setLoginStatus] = useState("LOGGED_IN");
   const [user, setUser] = useState({});
 
   const checkLoginStatus = () => {
     axios
-      .get("http://localhost:3001/logged_in", { withCredentials: true })
+      .get("API_ENDPOINT/logged_in", { withCredentials: true })
       .then((response) => {
         if (response.data.logged_in && loginStatus === "NOT_LOGGED_IN") {
           setLoginStatus("LOGGED_IN");

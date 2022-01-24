@@ -12,7 +12,7 @@ const initialFValues = {
   loginErrors: "",
   showPassword: false,
 }
-
+const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT
 export default function Registration(props) {
 
   const { handleLogin } = props
@@ -48,7 +48,7 @@ export default function Registration(props) {
   const handleSubmit = (event) => {
     axios
       .post(
-        "http://localhost:3001/registrations",
+        "API_ENDPOINT/registrations",
         {
           user: {
             email: values.email,

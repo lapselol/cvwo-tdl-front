@@ -18,6 +18,7 @@ import { Button } from "@mui/material";
 export default function Appbar(props) {
   const { handleLogout } = props;
   const [count, setCount] = useState(0);
+  const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT
 
   const countOverdue = () => {
     let numOverdue = 0;
@@ -38,7 +39,7 @@ export default function Appbar(props) {
   const handleLogoutClick = () => {
     console.log("Clicked Logout");
     axios
-      .delete("http://localhost:3001/logout", { withCredentials: true })
+      .delete("API_ENDPOINT/logout", { withCredentials: true })
       .then((response) => {
         handleLogout();
       })

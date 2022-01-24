@@ -1,4 +1,4 @@
-const apiURL = 'http://localhost:3001/api/v1/todos'
+const apiURL = 'process.env.REACT_APP_API_ENDPOINT/api/v1/todos'
 
 export function getAllTasks(){
     return fetch(apiURL)

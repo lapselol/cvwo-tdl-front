@@ -4,6 +4,7 @@ import "../../App.css";
 import { IconButton, OutlinedInput, InputAdornment } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 
+const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT
 const initialFValues = {
   email: "",
   password: "",
@@ -15,6 +16,7 @@ export default function Login(props) {
   const { handleSuccessfulAuth, handleMouseDownPassword } = props;
 
   const [values, setValues] = useState(initialFValues);
+  
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -35,7 +37,7 @@ export default function Login(props) {
     console.log(values, "login")
     axios
       .post(
-        "http://localhost:3001/sessions",
+        "API_ENDPOINT/sessions",
         {
           user: {
             email: values.email,

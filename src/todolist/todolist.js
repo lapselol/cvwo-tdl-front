@@ -12,7 +12,7 @@ import TodoForm from "./todoform"
 import TodoItem from "./todoitem"
 import Grid from "@mui/material/Grid"
 
-const api_url = 'http://localhost:3000/api/v1/todos'
+const api_url = process.env.REACT_APP_API_ENDPOINT
 
 class TodoList extends Component {
     constructor(props){
