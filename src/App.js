@@ -35,6 +35,7 @@ export default function App() {
   const handleLogout = () => {
     setLoginStatus("NOT_LOGGED_IN");
     setUser({});
+    localStorage.removeItem("token")
   };
 
   const handleLogin = (data) => {

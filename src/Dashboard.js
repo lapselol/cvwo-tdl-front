@@ -1,7 +1,7 @@
 import React from "react";
 import { Navigate, Routes, Route } from "react-router-dom";
 
-import { ThemeProvider, makeStyles, StylesProvider } from "@mui/styles";
+import { ThemeProvider } from "@mui/styles";
 import { Box, createTheme, CssBaseline, StyledEngineProvider } from "@mui/material";
 
 import Tasks from "./tasks/tasks";
@@ -25,18 +25,9 @@ const theme = createTheme({
   },
 });
 
-const useStyles = makeStyles({
-  appMain: {
-    paddingLeft: "320px",
-    width: "100%",
-  }
-} );
-
-
 export default function Dashboard(props) {
   const { loginStatus, handleLogout } = props;
 
-  const classes = useStyles();
   console.log(loginStatus, "loginStatus")
   if (loginStatus === "NOT_LOGGED_IN") {
     return <Navigate to="/" />;

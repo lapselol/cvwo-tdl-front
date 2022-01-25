@@ -49,6 +49,7 @@ export default function Login(props) {
       .then((response) => {
         console.log(response, "loginres")
         if (response.data.logged_in) {
+          localStorage.setItem("token", response.data.jwt)
           handleSuccessfulAuth(response.data);
         }
       })

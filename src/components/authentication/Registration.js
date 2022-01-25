@@ -61,6 +61,8 @@ export default function Registration(props) {
       .then((response) => {
         console.log(response, "regis");
         if (response.data.status === "created") {
+          localStorage.setItem("token", response.data.jwt)
+          console.log(response.data.jwt, "wkkwkwk")
           handleSuccessfulAuth(response.data);
         }
       })
