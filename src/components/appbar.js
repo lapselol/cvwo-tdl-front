@@ -58,7 +58,7 @@ export default function Appbar(props) {
         <Grid container alignItems="center">
           <Grid item sm></Grid>
           <Grid item>
-            <Tooltip title="You have overdue items" arrow>
+            <Tooltip title={count>0 && "You have overdue items"} arrow>
               <IconButton>
                 <Badge badgeContent={count} color="error">
                   <NotificationsNone fontSize="medium" />
