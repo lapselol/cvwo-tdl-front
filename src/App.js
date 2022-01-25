@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import axios from "axios";
 
@@ -28,8 +28,19 @@ export default function App() {
         console.log("check login error", error);
       });
   };
+
+  const authJWT = () => {
+    if(localStorage.getItem("token")) {
+      axios
+        .get(`${API_ENDPOINT}/logged_in`, { withCredentials: true }, { 'headers': { 'Authenticate': localStorage.token } })
+        .then(response => {
+          setUser(response.data.user)
+          console.log(response)
+        })
+    }
+  }
   useEffect(() => {
-    checkLoginStatus();
+    authJWT()
   }, []);
 
   const handleLogout = () => {
@@ -50,7 +61,7 @@ export default function App() {
         <Route
           path="/dashboard/*"
           element={
-            <Dashboard loginStatus={loginStatus} handleLogout={handleLogout} />
+            <Dashboard handleLogout={handleLogout} />
           }
         />
         <Route

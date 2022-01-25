@@ -26,10 +26,9 @@ const theme = createTheme({
 });
 
 export default function Dashboard(props) {
-  const { loginStatus, handleLogout } = props;
+  const { handleLogout } = props;
 
-  console.log(loginStatus, "loginStatus")
-  if (loginStatus === "NOT_LOGGED_IN") {
+  if (!localStorage.getItem("token")) {
     return <Navigate to="/" />;
   }
 
