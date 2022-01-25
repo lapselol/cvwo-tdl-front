@@ -4,6 +4,7 @@ import axios from "axios";
 import { IconButton, OutlinedInput, InputAdornment } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 
+import Notification from "../Notification";
 import "../../App.css";
 
 const initialFValues = {
@@ -17,6 +18,11 @@ export default function Login(props) {
   const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT;
 
   const [values, setValues] = useState(initialFValues);
+  const [notify, setNotify] = useState({
+    isOpen: false,
+    message: "",
+    type: "",
+  });
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -34,7 +40,6 @@ export default function Login(props) {
   };
 
   const handleSubmit = (event) => {
-    console.log(values, "login");
     axios
       .post(
         `${API_ENDPOINT}/sessions`,
@@ -50,6 +55,13 @@ export default function Login(props) {
         if (response.data.logged_in) {
           localStorage.setItem("token", response.data.jwt);
           handleSuccessfulAuth(response.data);
+        }
+        if (response.data.status !== "created") {
+          setNotify({
+            isOpen: true,
+            message: "Your login credentials are incorrect",
+            type: "error",
+          });
         }
       })
       .catch((error) => {
@@ -107,6 +119,7 @@ export default function Login(props) {
           <span>Sign up</span>
         </a>
       </p>
+      <Notification notify={notify} setNotify={setNotify} />
     </div>
   );
 }

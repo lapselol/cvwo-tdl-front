@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { IconButton, OutlinedInput, InputAdornment } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 
+import Notification from "../Notification";
 import "../../App.css";
 
 const initialFValues = {
@@ -18,7 +19,13 @@ const initialFValues = {
 export default function Registration(props) {
   const { handleLogin } = props;
   const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT;
+
   const [values, setValues] = useState(initialFValues);
+  const [notify, setNotify] = useState({
+    isOpen: false,
+    message: "",
+    type: "",
+  });
 
   let navigate = useNavigate();
 
@@ -60,6 +67,7 @@ export default function Registration(props) {
         { withCredentials: true }
       )
       .then((response) => {
+        console.log(response)
         if (response.data.status === "created") {
           localStorage.setItem("token", response.data.jwt);
           handleSuccessfulAuth(response.data);
@@ -67,6 +75,11 @@ export default function Registration(props) {
       })
       .catch((error) => {
         console.log("registration error", error);
+        setNotify({
+          isOpen: true,
+          message: "Please choose a different email",
+          type: "error",
+        });
       });
     event.preventDefault();
   };
@@ -135,6 +148,7 @@ export default function Registration(props) {
           Register
         </button>
       </form>
+    <Notification notify={notify} setNotify={setNotify} />
     </div>
   );
 }
