@@ -31,8 +31,8 @@ const useStyles = makeStyles((theme) => ({
   },
   newButton: {
     position: "flex",
-    left:"180px",
-  }
+    left: "180px",
+  },
 }));
 
 const headCells = [

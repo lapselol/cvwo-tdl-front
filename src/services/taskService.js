@@ -44,7 +44,7 @@ export function deleteTask(id){
         method: "DELETE",
     }).then((res) => res.json());
 }
-
+//toggles Task completion based on whether checkbox is checkoff or not
 export function completedTask(Task, isChecked){
     return fetch(`${apiURL}/${Task.id}`, {
         method: "PUT",
@@ -57,8 +57,8 @@ export function completedTask(Task, isChecked){
     }).then((res) => res.json())
 }
 
+//links drag and drop functionality of calendar to backend API to update date of task
 export function calendarDrop(Task, newDate){
-    console.log(newDate)
     let dateObj = new Date(newDate);
     let year = dateObj.getFullYear();
     let month = dateObj.getMonth() + 1;

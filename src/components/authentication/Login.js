@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "../../App.css";
+
 import { IconButton, OutlinedInput, InputAdornment } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 
-const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT
+import "../../App.css";
+
 const initialFValues = {
   email: "",
   password: "",
@@ -12,11 +13,10 @@ const initialFValues = {
   showPassword: false,
 };
 export default function Login(props) {
-
   const { handleSuccessfulAuth, handleMouseDownPassword } = props;
+  const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT;
 
   const [values, setValues] = useState(initialFValues);
-  
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -34,7 +34,7 @@ export default function Login(props) {
   };
 
   const handleSubmit = (event) => {
-    console.log(values, "login")
+    console.log(values, "login");
     axios
       .post(
         `${API_ENDPOINT}/sessions`,
@@ -47,9 +47,8 @@ export default function Login(props) {
         { withCredentials: true }
       )
       .then((response) => {
-        console.log(response, "loginres")
         if (response.data.logged_in) {
-          localStorage.setItem("token", response.data.jwt)
+          localStorage.setItem("token", response.data.jwt);
           handleSuccessfulAuth(response.data);
         }
       })
@@ -97,22 +96,15 @@ export default function Login(props) {
             }
           />
         </div>
-        <button
-          type="submit"
-          className="primary"
-          id="auth"
-        >
+        <button type="submit" className="primary" id="auth">
           Login
         </button>
-        
       </form>
-      <hr/>
+      <hr />
       <p>
         Don't have an account?&ensp;
         <a href="/register">
-          <span>
-            Sign up
-          </span>
+          <span>Sign up</span>
         </a>
       </p>
     </div>

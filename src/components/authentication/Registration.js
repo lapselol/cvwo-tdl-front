@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "../../App.css";
+import { useNavigate } from "react-router-dom";
+
 import { IconButton, OutlinedInput, InputAdornment } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import { useNavigate } from "react-router-dom";
+
+import "../../App.css";
 
 const initialFValues = {
   email: "",
@@ -11,12 +13,11 @@ const initialFValues = {
   password_confirmation: "",
   loginErrors: "",
   showPassword: false,
-}
-const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT
+};
+
 export default function Registration(props) {
-
-  const { handleLogin } = props
-
+  const { handleLogin } = props;
+  const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT;
   const [values, setValues] = useState(initialFValues);
 
   let navigate = useNavigate();
@@ -59,10 +60,8 @@ export default function Registration(props) {
         { withCredentials: true }
       )
       .then((response) => {
-        console.log(response, "regis");
         if (response.data.status === "created") {
-          localStorage.setItem("token", response.data.jwt)
-          console.log(response.data.jwt, "wkkwkwk")
+          localStorage.setItem("token", response.data.jwt);
           handleSuccessfulAuth(response.data);
         }
       })

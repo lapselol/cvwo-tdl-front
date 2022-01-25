@@ -6,12 +6,12 @@ import Button from "./Button";
 import ActionButton from "./ActionButton";
 
 const Controls = {
-    Input,
-    Select,
-    Checkbox,
-    DatePicker,
-    Button,
-    ActionButton
-}
+  Input,
+  Select,
+  Checkbox,
+  DatePicker,
+  Button,
+  ActionButton,
+};
 
 export default Controls;

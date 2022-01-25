@@ -104,10 +104,10 @@ button#auth {
 }
 button.primary#auth {
   width: 50%;
-  background: #b14f46;
+  background: #004bac;
 }
 button.primary:hover#auth {
-  background: #db4c3f;
+  background: #378dff;
 }
 button.secondary#auth {
   width: 50%;

@@ -22,6 +22,7 @@ export default function Appbar(props) {
   const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT;
   const navigate = useNavigate();
 
+  //for notification icon
   const countOverdue = () => {
     let numOverdue = 0;
     getAllTasks().then((data) => {
@@ -64,7 +65,7 @@ export default function Appbar(props) {
                 </Badge>
               </IconButton>
             </Tooltip>
-            <IconButton disableRipple="true"></IconButton>
+            <IconButton disableRipple></IconButton>
             <Button
               variant="contained"
               startIcon={<Logout />}

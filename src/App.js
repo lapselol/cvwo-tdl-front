@@ -48,7 +48,7 @@ export default function App() {
         <Route path="/" element={<Home handleLogin={handleLogin} />} />
         <Route
           path="/dashboard/*"
-          element={<Dashboard handleLogout={handleLogout} authJWT = {authJWT}/>}
+          element={<Dashboard handleLogout={handleLogout} authJWT={authJWT} />}
         />
         <Route
           path="/register"
