@@ -26,8 +26,8 @@ export default function Popup(props) {
     const classes = useStyles();
 
     return (
-        <Dialog open={openPopup} maxWidth="md" >
-            <DialogTitle >
+        <Dialog open={openPopup} maxWidth="md" classes={{ paper: classes.dialogWrapper }}>
+            <DialogTitle className={classes.dialogTitle}>
                 <div style={{ display: 'flex' }}>
                     <Typography variant="h6" component="div" style={{ flexGrow: 1 }}>
                         {title}

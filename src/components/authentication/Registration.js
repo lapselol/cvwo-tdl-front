@@ -74,6 +74,7 @@ export default function Registration(props) {
 
   return (
     <div className="Home">
+      <h1>Sign Up</h1>
       <form className="form" onSubmit={handleSubmit}>
         <div className="input-group">
           <label htmlFor="email">Email</label>

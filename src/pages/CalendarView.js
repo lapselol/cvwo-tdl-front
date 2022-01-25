@@ -11,7 +11,6 @@ import * as dateHandler from "../services/dateHandler";
 import TaskForm from "../tasks/taskform";
 
 export default function CalendarView() {
-
   const [refreshing, setRefreshing] = useState(false);
   const [records, setRecords] = useState([]);
   const [recordForEdit, setRecordForEdit] = useState(null);
@@ -43,11 +42,9 @@ export default function CalendarView() {
   };
 
   const refresh = () => {
-    taskService
-      .getAllTasks()
-      .then((json) => {
-        setRecords(json);
-      });
+    taskService.getAllTasks().then((json) => {
+      setRecords(json);
+    });
   };
 
   const onRefresh = useCallback(async () => {
@@ -86,14 +83,14 @@ export default function CalendarView() {
           };
         })}
         eventClick={function (info) {
-          let eventToItem = records.find((item) => item.id == info.event.id)
-          openInPopup(eventToItem)
+          let eventToItem = records.find((item) => item.id == info.event.id);
+          openInPopup(eventToItem);
         }}
         editable={true}
         eventDrop={function (info) {
-          let eventToItem = records.find((item) => item.id == info.event.id)
-          taskService.calendarDrop(eventToItem, info.event.start)
-          onRefresh()
+          let eventToItem = records.find((item) => item.id == info.event.id);
+          taskService.calendarDrop(eventToItem, info.event.start);
+          onRefresh();
         }}
         dateClick={function (info) {
           const temp_obj = {

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { makeStyles } from "@mui/styles";
-import { css } from "@emotion/react";
 
 export function useForm(initialFValues, validateOnChange = false, validate) {
   const [values, setValues] = useState(initialFValues);
@@ -43,10 +42,7 @@ export function Form(props) {
   const classes = useStyles();
   const { children, ...other } = props;
   return (
-    <form css={`"& .MuiFormControl-root": {
-      width: "80%",
-      margin: theme.spacing(1),
-    },`} autoComplete="off" {...other}>
+    <form className={classes.root} autoComplete="off" {...other}>
       {props.children}
     </form>
   );

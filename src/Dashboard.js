@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Navigate, Routes, Route } from "react-router-dom";
 
-import { ThemeProvider } from "@mui/styles";
-import { Box, createTheme, CssBaseline, StyledEngineProvider } from "@mui/material";
+import { ThemeProvider, makeStyles } from "@mui/styles";
+import { createTheme, CssBaseline } from "@mui/material";
 
 import Tasks from "./tasks/tasks";
 import Appbar from "./components/appbar";
@@ -25,27 +25,33 @@ const theme = createTheme({
   },
 });
 
-export default function Dashboard(props) {
-  const { handleLogout } = props;
+const useStyles = makeStyles({
+  appMain: {
+    paddingLeft: "320px",
+    width: "100%",
+  },
+});
 
-  if (!localStorage.getItem("token")) {
-    return <Navigate to="/" />;
-  }
+export default function Dashboard(props) {
+
+  const classes = useStyles();
+  const { handleLogout, authJWT } = props;
+
+  useEffect(() => {
+    authJWT()
+  }, [])
 
   return (
-    <StyledEngineProvider injectFirst>
-      <ThemeProvider theme={theme}>
-        <Sidebar />
-        <Box sx={{pl:37, mr: 5, ml: 5, w: 1}}>
+    <ThemeProvider theme={theme}>
+      <Sidebar />
+        <div className={classes.appMain}>
           <Appbar handleLogout={handleLogout} />
           <Routes>
             <Route path="/calendar" element={<CalendarView />} />
             <Route path="/" element={<Tasks />} />
           </Routes>
-        </Box>
-        <CssBaseline />
-      </ThemeProvider>
-    <div></div>
-    </StyledEngineProvider>
+        </div>
+      <CssBaseline />
+    </ThemeProvider>
   );
 }

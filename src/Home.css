@@ -8,6 +8,7 @@
 
 html {
   background: #b5c0ad;
+  background-image: url("./background.png");
   background-position: center;
   background-repeat: no-repeat;
   min-height: 720px;
@@ -19,18 +20,21 @@ body {
   height: 100%;
 }
 
+p {
+  margin: 25px;
+}
 
 .Home {
   background: #fff;
-  border-radius: 4px;
+  border-radius: 15px;
   box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
-  max-width: 615px;
-  padding-bottom: 66px;
+  max-width: 550px;
+  padding-bottom: 55px;
   padding-top: 46px;
   text-align: center;
-  width: 90%;
+  width: 60%;
   position: fixed;
-  top: 50%;
+  top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
@@ -38,8 +42,8 @@ body {
   max-width: 20%;
 }
 .Home > .form {
-  margin-bottom: 98px;
-  margin-top: 41px;
+  margin-bottom: 60px;
+  margin-top: 60px;
 }
 
 .input-group {
@@ -51,6 +55,7 @@ body {
 .input-group > label,
 .input-group > input {
   font-family: 'Roboto', sans-serif;
+  font-weight: bold;
   max-width: 420px;
   text-align: left;
   width: 80%;
@@ -99,10 +104,10 @@ button#auth {
 }
 button.primary#auth {
   width: 50%;
-  background: #f58733;
+  background: #b14f46;
 }
 button.primary:hover#auth {
-  background: #ea6c0b;
+  background: #db4c3f;
 }
 button.secondary#auth {
   width: 50%;

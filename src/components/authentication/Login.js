@@ -3,7 +3,6 @@ import axios from "axios";
 import "../../App.css";
 import { IconButton, OutlinedInput, InputAdornment } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import { Navigate } from "react-router-dom";
 
 const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT
 const initialFValues = {
@@ -62,9 +61,7 @@ export default function Login(props) {
 
   return (
     <div className="Home">
-      <h1>Welcome to my To Do List!</h1>
-      
-      <h2>Login Here</h2>
+      <h1>Sign In</h1>
       <form className="form" onSubmit={handleSubmit}>
         <div className="input-group">
           <label htmlFor="email">Email</label>
@@ -107,17 +104,17 @@ export default function Login(props) {
         >
           Login
         </button>
+        
       </form>
-      <button
-          type="submit"
-          className="secondary"
-          id="auth"
-          onClick={
-            () => {window.location.pathname = "/register"}
-          }
-        >
-          Sign Up
-        </button>
+      <hr/>
+      <p>
+        Don't have an account?&ensp;
+        <a href="/register">
+          <span>
+            Sign up
+          </span>
+        </a>
+      </p>
     </div>
   );
 }

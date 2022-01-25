@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import {
@@ -8,17 +9,18 @@ import {
   IconButton,
   Badge,
   Tooltip,
+  Button,
 } from "@mui/material";
 import { Logout, NotificationsNone } from "@mui/icons-material";
 
 import { isOverdue } from "../services/dateHandler";
 import { getAllTasks } from "../services/taskService";
-import { Button } from "@mui/material";
 
 export default function Appbar(props) {
   const { handleLogout } = props;
   const [count, setCount] = useState(0);
-  const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT
+  const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT;
+  const navigate = useNavigate();
 
   const countOverdue = () => {
     let numOverdue = 0;
@@ -42,6 +44,7 @@ export default function Appbar(props) {
       .delete(`${API_ENDPOINT}/logout`, { withCredentials: true })
       .then((response) => {
         handleLogout();
+        navigate("../", { replace: true });
       })
       .catch((error) => {
         console.log("logout error", error);

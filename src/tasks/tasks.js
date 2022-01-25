@@ -227,6 +227,7 @@ export default function Tasks() {
                   >
                     <EditOutlined fontSize="small" />
                   </Controls.ActionButton>
+                  &ensp;
                   <Controls.ActionButton
                     sx={{ bgcolor: "background.paper" }}
                     color="error"
