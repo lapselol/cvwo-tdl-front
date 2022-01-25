@@ -1,9 +1,8 @@
 import React from "react";
 import { Navigate, Routes, Route } from "react-router-dom";
-import "./App.css";
 
 import { ThemeProvider, makeStyles } from "@mui/styles";
-import { createTheme, CssBaseline } from "@mui/material";
+import { Box, createTheme, CssBaseline } from "@mui/material";
 
 import Tasks from "./tasks/tasks";
 import Appbar from "./components/appbar";
@@ -30,9 +29,9 @@ const useStyles = makeStyles({
   appMain: {
     paddingLeft: "320px",
     width: "100%",
-  },
-  index: 1,
+  }
 } );
+
 
 export default function Dashboard(props) {
   const { loginStatus, handleLogout } = props;
@@ -46,13 +45,13 @@ export default function Dashboard(props) {
   return (
     <ThemeProvider theme={theme}>
       <Sidebar />
-      <div className={classes.appMain}>
+      <Box sx={{pl:37, mr: 5, ml: 5, w: 1}}>
         <Appbar handleLogout={handleLogout} />
         <Routes>
           <Route path="/calendar" element={<CalendarView />} />
           <Route path="/" element={<Tasks />} />
         </Routes>
-      </div>
+      </Box>
       <CssBaseline />
     </ThemeProvider>
   );

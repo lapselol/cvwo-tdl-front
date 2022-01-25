@@ -9,7 +9,6 @@ import Popup from "../components/popup";
 import * as taskService from "../services/taskService";
 import * as dateHandler from "../services/dateHandler";
 import TaskForm from "../tasks/taskform";
-import "./CalendarView.css";
 
 export default function CalendarView() {
 

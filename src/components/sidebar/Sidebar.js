@@ -1,7 +1,7 @@
 import React from "react";
 
-import "./Sidebar.css";
 import SidebarData from "./SidebarData";
+import "./Sidebar.css";
 
 export default function Sidebar() {
   return (
