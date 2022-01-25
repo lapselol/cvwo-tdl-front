@@ -10,6 +10,8 @@ import * as taskService from "../services/taskService";
 import * as dateHandler from "../services/dateHandler";
 import TaskForm from "../tasks/taskform";
 
+import './CalendarView.css'
+
 export default function CalendarView() {
   const [refreshing, setRefreshing] = useState(false);
   const [records, setRecords] = useState([]);
