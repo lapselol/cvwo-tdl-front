@@ -98,14 +98,16 @@ button#auth {
   width: 80%;
 }
 button.primary#auth {
+  width: 50%;
   background: #f58733;
 }
 button.primary:hover#auth {
   background: #ea6c0b;
 }
 button.secondary#auth {
-  background: #c1d7aa;
+  width: 50%;
+  background: #85ad59;
 }
 button.secondary:hover#auth {
-  background: #a8c787;
+  background: #305805;
 }
