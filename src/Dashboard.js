@@ -1,8 +1,8 @@
 import React from "react";
 import { Navigate, Routes, Route } from "react-router-dom";
 
-import { ThemeProvider, makeStyles } from "@mui/styles";
-import { Box, createTheme, CssBaseline } from "@mui/material";
+import { ThemeProvider, makeStyles, StylesProvider } from "@mui/styles";
+import { Box, createTheme, CssBaseline, StyledEngineProvider } from "@mui/material";
 
 import Tasks from "./tasks/tasks";
 import Appbar from "./components/appbar";
@@ -43,16 +43,19 @@ export default function Dashboard(props) {
   }
 
   return (
-    <ThemeProvider theme={theme}>
-      <Sidebar />
-      <Box sx={{pl:37, mr: 5, ml: 5, w: 1}}>
-        <Appbar handleLogout={handleLogout} />
-        <Routes>
-          <Route path="/calendar" element={<CalendarView />} />
-          <Route path="/" element={<Tasks />} />
-        </Routes>
-      </Box>
-      <CssBaseline />
-    </ThemeProvider>
+    <StyledEngineProvider injectFirst>
+      <ThemeProvider theme={theme}>
+        <Sidebar />
+        <Box sx={{pl:37, mr: 5, ml: 5, w: 1}}>
+          <Appbar handleLogout={handleLogout} />
+          <Routes>
+            <Route path="/calendar" element={<CalendarView />} />
+            <Route path="/" element={<Tasks />} />
+          </Routes>
+        </Box>
+        <CssBaseline />
+      </ThemeProvider>
+    <div></div>
+    </StyledEngineProvider>
   );
 }
